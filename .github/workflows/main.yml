@@ -1,0 +1,13 @@
+name: Scheduled Backend Ping
+
+on:
+  schedule:
+    - cron: '*/14 * * * *'  # cada 10 minutos
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping backend de Render
+        run: curl -s https://screenmatch-backend.onrender.com/series/inicio > /dev/null
